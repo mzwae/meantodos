@@ -1,0 +1,7 @@
+# Database authentication
+# ==========================
+password.js
+
+# Node and related ecosystem
+# ==========================
+node_modules/
