@@ -3,8 +3,6 @@
     .module('todoApp')
     .controller('homeCtrl', homeCtrl);
 
-  //  homeCtrl.$inject = ['$scope'];
-
   function homeCtrl(dataService) {
     var vm = this;
     dataService.getAllTodos()
@@ -18,7 +16,6 @@
 
     //Add task
     vm.addTask = function () {
-      console.log("vm.input=", vm.input);
       if (vm.input === undefined || vm.input === null ) {
         window.alert("Please type a task first and then press Add!");
         return;
@@ -42,15 +39,14 @@
 
 
     //Delete task
-    vm.deleteTask = function (taskid) {
-      console.log("Deleted task id:", taskid);
+    vm.deleteTask = function (task) {
       for (var i = 0; i < vm.tasks.length; i++) {
-        if (vm.tasks[i]._id === taskid) {
+        if (vm.tasks[i]._id === task._id) {
           vm.tasks.splice(i, 1);
         }
       }
 
-      dataService.deleteTodo(taskid)
+      dataService.deleteTodo(task._id)
         .success(function (data) {
           console.log("Task successfully deleted!");
         })
