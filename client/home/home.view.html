@@ -1,0 +1,45 @@
+<!--<navigation></navigation>-->
+<div class="row">
+  <div class="col-sm-8">
+    <form class="well" ng-submit="" name="inputxt">
+
+      <div class="form-group">
+
+
+        <input type="text" ng-model="vm.input" name="title" class="form-control" placeholder="Type a task here to add...">
+      </div>
+
+    </form>
+  </div>
+  <div class="col-sm-4">
+    <input ng-click="vm.addTask()" type="button" value="Add Task" class="btn btn-success">
+  </div>
+</div>
+<div class="row">
+<!--  <div class="task-list">-->
+
+    <div ng-repeat="task in vm.tasks">
+
+
+      <div class="col-sm-1">
+        <input type="checkbox" ng-click="vm.updateTask(task)" ng-model="task.isCompleted" ng-class="strikethrough">
+
+      </div>
+
+      <div ng-if="!task.isCompleted" class="col-sm-7">
+        <h5>{{task.text}}</h5>
+      </div>
+      
+      <div ng-if="task.isCompleted" class="col-sm-7">
+       <s> <h5>{{task.text}}</h5> </s>
+      </div>
+
+      <div class="col-sm-4">
+        <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.deleteTask(task._id)">
+      </div>
+      <br><br><br><br>
+    </div>
+
+<!--  </div>-->
+
+</div>

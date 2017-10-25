@@ -8,13 +8,16 @@ var todos = require('./routes/todos');
 var app = express();
 
 //View Engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'ejs');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: false}));
 
-app.use('/', index);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client')));
+//app.use('/', index);
+app.set('views', path.join(__dirname, 'client', 'index.html'));
 app.use('/api/v1/', todos);
 
 app.listen(3000, function(){
