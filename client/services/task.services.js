@@ -16,8 +16,8 @@
           return $http.post('/api/v1/todo', newTask);
         };
       
-      var updateTodo = function(taskid, updatedTask){
-        return $http.put('/api/v1/todo/' + taskid, updatedTask);
+      var updateTodo = function(updatedTask){
+        return $http.put('/api/v1/todo/' + updatedTask._id, updatedTask);
       };
         
         return {

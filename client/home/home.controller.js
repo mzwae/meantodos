@@ -65,8 +65,7 @@
         isCompleted: !task.isCompleted 
       };
       
-      console.log("task is", updatedTask.text, updatedTask.isCompleted);
-      dataService.updateTodo(task._id, updatedTask)
+      dataService.updateTodo(updatedTask)
         .success(function(data, result){
         console.log("Task successfully updated!\n", result);
       })

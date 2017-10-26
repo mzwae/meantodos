@@ -1,16 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var password = require('../password'); 
 
-var credentials = password.value; //<username>:<password>
+//var credentials; //<username>:<password>
+//
+//if (process.env.NODE_ENV === 'production') {
+//  credentials = process.env.CREDENTIALS;
+//} else {
+//  credentials = require('../password').value; 
+//}
+//
+//var db = mongojs('mongodb://' + credentials + '@ds127375.mlab.com:27375/meantodos', ['todos']);
 
-if (process.env.NODE_ENV === 'production') {
-  credentials = process.env.CREDENTIALS;
+
+var dbURI = 'mongodb://localhost/meantodos';
+if(process.env.NODE_ENV === 'production'){
+  process.env.CREDENTIALS;
 }
 
-var db = mongojs('mongodb://' + credentials + '@ds127375.mlab.com:27375/meantodos', ['todos']);
-
+var db = mongojs(dbURI);
 // Get Todos
 router.get('/todos', function (req, res, next) {
   db.todos.find(function (err, todos) {

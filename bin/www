@@ -38,13 +38,18 @@ function normalizePort(val) {
 
   if (isNaN(port)) {
     // named pipe
+    console.log("port chosen is:", val);
     return val;
   }
 
   if (port >= 0) {
     // port number
+      console.log("port chosen is:", val);
+
     return port;
   }
+
+      console.log("No port was chosen!");
 
   return false;
 }
