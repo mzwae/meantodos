@@ -2,17 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 
-//var credentials; //<username>:<password>
-//
-//if (process.env.NODE_ENV === 'production') {
-//  credentials = process.env.CREDENTIALS;
-//} else {
-//  credentials = require('../password').value; 
-//}
-//
-//var db = mongojs('mongodb://' + credentials + '@ds127375.mlab.com:27375/meantodos', ['todos']);
-
-
 var dbURI = 'mongodb://localhost/meantodos';
 if(process.env.NODE_ENV === 'production'){
   process.env.CREDENTIALS;
