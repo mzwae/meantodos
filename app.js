@@ -17,6 +17,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.set('views', path.join(__dirname, 'client', 'index.html'));
 app.use('/api/v1/', todos);
 
-app.listen(3000, function(){
-  console.log('Server started on port 3000...');
-});
+//app.listen(3000, function(){
+//  console.log('Server started on port 3000...');
+//});
