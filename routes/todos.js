@@ -103,7 +103,12 @@ router.delete('/todo/:id', function (req, res, next) {
   });
 });
 
-
+gracefulShutdown = function (msg, callback) {
+  mongojs.connection.close(function () {
+    console.log('Mongojs disconnected through ' + msg);
+    callback();
+  });
+};
 
 // For nodemon restarts
 process.once('SIGUSR2', function () {

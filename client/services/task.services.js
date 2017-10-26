@@ -1,7 +1,5 @@
 (function () {
     /*Data service for pulling data from the API*/
-    dataService.$inject = ['$http'];
-
     function dataService($http) {
       var getAllTodos = function () {
         return $http.get('/api/v1/todos');
