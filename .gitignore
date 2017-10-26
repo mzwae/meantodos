@@ -1,6 +1,6 @@
 # Database authentication
 # ==========================
-password.js
+.env
 
 # Node and related ecosystem
 # ==========================

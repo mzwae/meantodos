@@ -8,9 +8,6 @@ if (process.env.NODE_ENV === 'production') {
   databaseType = "REMOTE";
   dbURI = process.env.CREDENTIALS;
 }
-console.log("dbURI is:", dbURI);
-console.log("process.env.CREDENTIALS:", process.env.CREDENTIALS);
-console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
 var db = mongojs(dbURI);
 
 console.log("App server successfully connected to", databaseType, "Database server!");
