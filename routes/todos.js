@@ -1,8 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var password = require('../password'); //<username>:<password>
-var db = mongojs('mongodb://' + password.value + '@ds127375.mlab.com:27375/meantodos', ['todos']);
+var password = require('../password'); 
+
+var credentials = password.value; //<username>:<password>
+
+if (process.env.NODE_ENV === 'production') {
+  credentials = process.env.CREDENTIALS;
+}
+
+var db = mongojs('mongodb://' + credentials + '@ds127375.mlab.com:27375/meantodos', ['todos']);
 
 // Get Todos
 router.get('/todos', function (req, res, next) {

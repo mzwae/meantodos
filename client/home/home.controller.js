@@ -16,7 +16,7 @@
 
     //Add task
     vm.addTask = function () {
-      if (vm.input === undefined || vm.input === null ) {
+       if (vm.input === undefined || vm.input === null ) {
         window.alert("Please type a task first and then press Add!");
         return;
       }
