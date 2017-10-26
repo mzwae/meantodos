@@ -3,11 +3,19 @@ var router = express.Router();
 var mongojs = require('mongojs');
 
 var dbURI = 'mongodb://localhost/meantodos';
-if(process.env.NODE_ENV === 'production'){
-  process.env.CREDENTIALS;
+var databaseType = "LOCAL";
+if (process.env.NODE_ENV === 'production') {
+  databaseType = "REMOTE";
+  dbURI = process.env.CREDENTIALS;
 }
-
+console.log("dbURI is:", dbURI);
+console.log("process.env.CREDENTIALS:", process.env.CREDENTIALS);
+console.log("process.env.NODE_ENV:", process.env.NODE_ENV);
 var db = mongojs(dbURI);
+
+console.log("App server successfully connected to", databaseType, "Database server!");
+
+
 // Get Todos
 router.get('/todos', function (req, res, next) {
   db.todos.find(function (err, todos) {
@@ -100,7 +108,24 @@ router.delete('/todo/:id', function (req, res, next) {
 
 
 
-
+// For nodemon restarts
+process.once('SIGUSR2', function () {
+  gracefulShutdown('nodemon restart', function () {
+    process.kill(process.pid, 'SIGUSR2');
+  });
+});
+// For app termination
+process.on('SIGINT', function () {
+  gracefulShutdown('app termination', function () {
+    process.exit(0);
+  });
+});
+// For Heroku app termination
+process.on('SIGTERM', function () {
+  gracefulShutdown('Heroku app shutdown', function () {
+    process.exit(0);
+  });
+});
 
 
 
