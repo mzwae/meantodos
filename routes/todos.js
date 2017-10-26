@@ -103,6 +103,7 @@ router.delete('/todo/:id', function (req, res, next) {
   });
 });
 
+/*
 gracefulShutdown = function (msg, callback) {
   mongojs.connection.close(function () {
     console.log('Mongojs disconnected through ' + msg);
@@ -128,6 +129,7 @@ process.on('SIGTERM', function () {
     process.exit(0);
   });
 });
+*/
 
 
 
